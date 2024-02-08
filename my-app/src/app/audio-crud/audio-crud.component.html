@@ -1,0 +1,43 @@
+<div class="audio-crud-container">
+    <h2>Audio CRUD</h2>
+  
+    <!-- Add New Audio Form -->
+    <div class="add-audio-form">
+      <h3>Add New Audio</h3>
+      <form (submit)="addAudio()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" [(ngModel)]="newAudioData.name" required>
+        </div>
+        <div class="form-group">
+          <label for="image">Image:</label>
+          <input type="text" id="image" name="image" [(ngModel)]="newAudioData.image" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" id="description" name="description" [(ngModel)]="newAudioData.description">
+        </div>
+        <div class="form-group">
+          <label for="song">Song:</label>
+          <input type="text" id="song" name="song" [(ngModel)]="newAudioData.song" required>
+        </div>
+        <button type="submit">Add Audio</button>
+      </form>
+    </div>
+  
+    <!-- List of Audios -->
+    <div class="audio-list">
+      <h3>Audio List</h3>
+      <ul>
+        <li *ngFor="let audio of audios">
+          <div>{{ audio.name }}</div>
+          <div>{{ audio.image }}</div>
+          <div>{{ audio.description }}</div>
+          <div>{{ audio.song }}</div>
+          <button (click)="updateAudio(audio._id, { name: 'New Name', image: 'New Image', description: 'New Description', song: 'New Song' })">Update</button>
+          <button (click)="deleteAudio(audio._id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
